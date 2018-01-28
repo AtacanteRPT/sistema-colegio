@@ -11,6 +11,11 @@ module.exports = function(sequelize, DataTypes) {
         model: 'usuario',
         key: 'id'
       }
+
+    },
+     nombre: {
+      type: DataTypes.STRING(100),
+      allowNull: true
     },
     sexo: {
       type: DataTypes.STRING(100),
@@ -32,7 +37,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATEONLY,
       allowNull: true
     }
+
   }, {
     tableName: 'alumno'
   });
 };
+

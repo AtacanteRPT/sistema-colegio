@@ -2,7 +2,7 @@
 
 var express = require('express'),
   config = require('./config/config'),
-  db = require('./app/models');
+  db = require('./app/modelos');
 
 var app = express();
 
@@ -16,6 +16,7 @@ db.sequelize
         console.log('Express server listening on port ' + config.port);
       });
     }
+
   }).catch(function (e) {
     throw new Error(e);
   });
