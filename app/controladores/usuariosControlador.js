@@ -8,15 +8,15 @@ module.exports = app => {
 }
 
 router.get('/usuarios', (req, res, next) => {
-    db.usuarios.findAll({ attributes: ['id', 'nombre', 'email', 'tipo'] }).then((sucursales) => {
+    db.usuario.findAll({ attributes: ['id', 'nombre', 'email', 'tipo'] }).then((sucursales) => {
         res.json(sucursales);
     }, (ex) => {
         res.status(500).send();
     });
 });
-router.get('/usuarios/:id', (req, res, next) => {
+router.get('/usuario/:id', (req, res, next) => {
     var usuarioId = parseInt(req.params.id, 10);
-    db.usuarios.findById(usuarioId).then((usuario) => {
+    db.usuario.findById(usuarioId).then((usuario) => {
         if (usuario) {
             res.json({
                 id: usuario.id,
@@ -32,7 +32,7 @@ router.get('/usuarios/:id', (req, res, next) => {
         res.status(500).send();
     })
 })
-router.put('/usuarios/:id', (req, res, next) => {
+router.put('/usuario/:id', (req, res, next) => {
     var usuarioId = parseInt(req.params.id, 10)
     var usuarioEditado = {
         nombre: req.body.nombre,
@@ -40,7 +40,7 @@ router.put('/usuarios/:id', (req, res, next) => {
         email: req.body.email
     }
 
-    db.usuarios.findById(usuarioId).then((usuario) => {
+    db.usuario.findById(usuarioId).then((usuario) => {
         if (usuario) {
             usuarioEditado.id = usuario.id
             usuarioEditado.password = usuario.password
@@ -62,9 +62,9 @@ router.put('/usuarios/:id', (req, res, next) => {
         res.status(500).send();
     });
 })
-router.delete('/usuarios/:id', (req , res , next)=>{
+router.delete('/usuario/:id', (req , res , next)=>{
     var usuarioId = parseInt(req.params.id, 10 );
-    db.usuarios.destroy({
+    db.usuario.destroy({
         where:{
             id : usuarioId
         }
